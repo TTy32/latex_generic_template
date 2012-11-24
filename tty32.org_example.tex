@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TTy32.org LaTeX Example %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% to be added:
+% pictures
+% tables
+% references
+% equation styling
+
+% report documentclass (book, article, letter)
+\documentclass[11pt,a4paper]{report}
+
+	% gobal page margins
+	\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+	% header and footer
+	\usepackage{fancyhdr}
+	\setlength{\headheight}{15.2pt}
+	\pagestyle{fancy}
+	\lhead[<lh-even>]{left head}	\chead[<ch-even>]{center head}	\rhead[<rh-even>]{right head}
+	\lfoot[<lf-even>]{left foot}	\cfoot[<cf-even>]{center foot}	\rfoot[<rf-even>]{right foot}
+
+	% other packages
+	\usepackage{listings}
+	\usepackage{color}
+	\usepackage{hyperref}
+	\usepackage{graphicx} % For images
+	\usepackage[section]{placeins} % Disable floating for images (appear in the section they are defined, not outside)
+
+	% color defines
+	\definecolor{code-strings}{RGB}{0,0,190}
+	\definecolor{code-comments}{RGB}{0,190,0} 
+	\definecolor{code-keywords}{RGB}{190,0,0}
+	\definecolor{code-bg}{RGB}{242,242,242}
+	\definecolor{code-frameline}{RGB}{200,200,200}
+
+	% style for source code
+	\lstset{
+		basicstyle=\ttfamily,
+		keywordstyle=\color{code-keywords}\bfseries,
+		stringstyle=\color{code-strings},
+		commentstyle=\color{code-comments},
+		morecomment=[s][\color{code-comments}]{/**}{*/}, % include javadoc-style comments
+		numbers=left,
+		numberstyle=\color{black}, % optional: \tiny
+		stepnumber=1,
+		numbersep=10pt,
+		tabsize=2,
+		showspaces=false,
+		showstringspaces=false,
+		breaklines=true,
+		breakatwhitespace=true,
+		backgroundcolor=\color{code-bg}, % frame background color
+		% frameround=tttt, % rounded corners
+		frame=leftline,
+		fillcolor=\color{code-frameline}, % frame line color
+		caption=\lstname % filename as listing caption
+	}
+
+%
+% document begins here
+%
+\begin{document}
+
+	% macro's
+	\newcommand{\tty}{tty32.org}
+
+	% frontpage
+	\title{Example document by \tty \\
+			i am line breaked}
+	\author{Randy Wijnants}
+	\date{\today} % today's date
+	\maketitle
+
+	% listings
+	\tableofcontents
+	\listoffigures 
+	\listoftables 
+	\lstlistoflistings
+
+%
+% Included in TOC starts here
+%
+
+	% level -1 not in letters
+	\part {part title}
+	im a part!
+
+	% level 0 only books and letters
+	\chapter{chapter title}
+	I'm a chapter
+
+	% level 1 not in letters 
+	\section{section title}
+	section!
+
+	% level 2 not in letters 
+	\subsection{subsection title}
+	subsection
+
+	% level 3 not in letters 
+	\subsubsection{subsubsection title}
+	subsubsection
+
+	% level 4 not in letters 
+	\paragraph{paragraph title}
+	paragraph
+
+	% level 5 not in letters 
+	\subparagraph{subparagraph title}
+	subparagraph
+
+		% equation
+		\begin{equation} \label{eq:solved}
+		\sqrt{2}{\frac{12}{3}}
+		\end{equation}
+
+		% refer to the label
+		see code \ref{snippet} for the fsm code!
+
+		% another refer to an equation
+		See \ref{eq:solved} to see the solved equation!
+
+		\begin{figure}[\htbp]
+			\includegraphics[width=0.5\textwidth]{rutrippin}
+		  \caption{R U trippin?}
+		  \label{trippin}
+		\end{figure}
+
+
+		% listing
+		\begin{enumerate}
+		\item i'm in a list
+		\item well, me too!
+		\end{enumerate}
+
+		% external source code with label
+		\lstinputlisting[label=snippet, language=c]{snippet.c}
+
+\end{document}
