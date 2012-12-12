@@ -27,6 +27,7 @@
 	\usepackage{hyperref}
 	\usepackage{graphicx} % For images
 	\usepackage[section]{placeins} % Disable floating for images (appear in the section they are defined, not outside)
+	\usepackage{tocvsec2}
 
 	% color defines
 	\definecolor{code-strings}{RGB}{0,0,190}
@@ -62,6 +63,9 @@
 % document begins here
 %
 \begin{document}
+
+	% set table of contents depth. this can be done throughout the document
+	\settocdepth{subsubsection}
 
 	% macro's
 	\newcommand{\tty}{tty32.org}
